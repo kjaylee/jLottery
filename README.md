@@ -1,0 +1,2 @@
+# jLottery
+solidty lottery games
