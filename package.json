@@ -1,0 +1,13 @@
+{
+  "name": "jLottery",
+  "version": "1.0.0",
+  "description": "solidity lottery games.",
+  "main": "index.js",
+  "repository": "https://github.com/kjaylee/jLottery.git",
+  "author": "k.jaylee@gmail.com",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "openzeppelin-solidity": "^2.0.0"
+  }
+}
