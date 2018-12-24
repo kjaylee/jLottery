@@ -7,7 +7,13 @@ import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
 contract TicketShop is Ownable {
     using SafeMath for uint256;
     uint ticketFee = 0.001 ether;
-    uint8 maxiumPlayerTicketCount = 3;
+    /*
+    maxiumPlayerTicketCount가 uint256인 이유:
+    각 저장소 슬롯에는 256 비트가 있습니다.
+    따라서 uint8 만 저장하는 경우 EVM은 누락 된 모든 자릿수를 0으로 채 웁니다.이 비용은 가스 비용입니다.
+    또한 EVM에 의해 uint256에서 계산이 수행되므로 uint256 이외의 다른 유형도 변환해야합니다.
+    */
+    uint maxiumPlayerTicketCount = 3;
     event NewTicket(uint ticketId, uint ticketNumber);
     struct Ticket {
         uint ticketNumber;
@@ -26,7 +32,7 @@ contract TicketShop is Ownable {
     function setTicketFee(uint _fee) external onlyOwner {
         ticketFee = _fee;
     }
-    function setMaxiumPlayerTicketCount(uint8 _count) external onlyOwner {
+    function setMaxiumPlayerTicketCount(uint _count) external onlyOwner {
         maxiumPlayerTicketCount = _count;
     }
 }
